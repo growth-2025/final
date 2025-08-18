@@ -72,7 +72,7 @@ export default function Home() {
               Market Movers
             </h1>
             <p className="text-sm text-neutral-400">
-              Live snapshot of {indicator} from Nepalipaisa
+              Live snapshot of {indicator} from Manoj Khadka Mind.
             </p>
           </div>
           <div className="flex items-center gap-2">
