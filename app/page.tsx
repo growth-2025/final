@@ -21,7 +21,10 @@ export default function Home() {
             .
           </li>
           <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+            Full Stack Engineer : Manoj Khadka
+          </li>
+          <li className="tracking-[-.01em]">
+            Full Stack Engineer : Apsara Kc
           </li>
         </ol>
 
