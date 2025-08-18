@@ -2,108 +2,69 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Full Stack Engineer : Manoj Khadka
-          </li>
-          <li className="tracking-[-.01em]">
-            Full Stack Engineer : Apsara Kc
-          </li>
-          <li className="tracking-[-.01em]">
-            Full Stack Engineer : Mariya Khadka
-            Full Stack Engineer : Mariya Khadka
-          </li>
-        </ol>
+    <div className="font-sans grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-12 sm:p-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      {/* Dashboard Header */}
+      <header className="row-start-1 w-full max-w-6xl text-center sm:text-left">
+        <h1 className="text-3xl font-bold mb-2">📈 Stock Monitor Dashboard</h1>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Track real-time stock trends and market performance</p>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      {/* Main Dashboard Content */}
+      <main className="row-start-2 w-full max-w-6xl flex flex-col gap-8">
+        {/* Stock Summary Cards */}
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+            <h2 className="text-sm text-gray-500">AAPL</h2>
+            <p className="text-2xl font-semibold text-green-600">+1.45%</p>
+            <p className="text-sm text-gray-500">$175.64</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+            <h2 className="text-sm text-gray-500">GOOGL</h2>
+            <p className="text-2xl font-semibold text-red-500">-0.78%</p>
+            <p className="text-sm text-gray-500">$138.12</p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+            <h2 className="text-sm text-gray-500">TSLA</h2>
+            <p className="text-2xl font-semibold text-green-600">+2.12%</p>
+            <p className="text-sm text-gray-500">$254.89</p>
+          </div>
+        </section>
+
+        {/* Stock Table */}
+        <section className="overflow-auto rounded-lg shadow border border-gray-200 dark:border-gray-700">
+          <table className="min-w-full text-sm">
+            <thead className="bg-gray-100 dark:bg-gray-700 text-left">
+              <tr>
+                <th className="p-4">Symbol</th>
+                <th className="p-4">Company</th>
+                <th className="p-4">Price</th>
+                <th className="p-4">Change</th>
+                <th className="p-4">Volume</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white dark:bg-gray-800">
+              {[
+                { symbol: "AAPL", name: "Apple Inc.", price: 175.64, change: "+1.45%", volume: "58M" },
+                { symbol: "GOOGL", name: "Alphabet Inc.", price: 138.12, change: "-0.78%", volume: "22M" },
+                { symbol: "TSLA", name: "Tesla Inc.", price: 254.89, change: "+2.12%", volume: "35M" },
+                { symbol: "AMZN", name: "Amazon.com", price: 129.43, change: "+0.91%", volume: "28M" },
+              ].map((stock) => (
+                <tr key={stock.symbol} className="border-t border-gray-200 dark:border-gray-700">
+                  <td className="p-4 font-semibold">{stock.symbol}</td>
+                  <td className="p-4">{stock.name}</td>
+                  <td className="p-4">${stock.price.toFixed(2)}</td>
+                  <td className={`p-4 ${stock.change.startsWith('+') ? 'text-green-600' : 'text-red-500'}`}>{stock.change}</td>
+                  <td className="p-4">{stock.volume}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="row-start-3 text-sm text-gray-400 mt-8 text-center">
+        © 2025 Stock Monitor. Built with Next.js & Tailwind CSS.
       </footer>
     </div>
   );
