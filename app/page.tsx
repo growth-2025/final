@@ -28,6 +28,7 @@ export default function Home() {
           </li>
           <li className="tracking-[-.01em]">
             Full Stack Engineer : Mariya Khadka
+            Full Stack Engineer : Mariya Khadka
           </li>
         </ol>
 
