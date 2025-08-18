@@ -26,6 +26,9 @@ export default function Home() {
           <li className="tracking-[-.01em]">
             Full Stack Engineer : Apsara Kc
           </li>
+          <li className="tracking-[-.01em]">
+            Full Stack Engineer : Mariya Khadka
+          </li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
